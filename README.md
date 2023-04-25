@@ -1,7 +1,6 @@
-# :blue_book: APIs REST
-## Seus serviços prontos para o mundo real
+# :blue_book: APIs REST: Seus serviços prontos para o mundo real
 
-Estudo  do Livro sobre APIs Rest
+Estudo  do Livro sobre APIs Rest (https://www.casadocodigo.com.br/products/livro-apis-rest)
 
 - :ballot_box_with_check: 1. O que é REST, afinal?
 - :white_large_square: 2. Expandindo nosso serviço inicial
