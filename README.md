@@ -4,7 +4,7 @@ Estudo  do Livro sobre APIs Rest (https://www.casadocodigo.com.br/products/livro
 
 - :ballot_box_with_check: 1. O que é REST, afinal?
 - :ballot_box_with_check: 2. Expandindo nosso serviço inicial
-- :white_large_square: 3. Criando relacionamentos entre recursos
+- :ballot_box_with_check: 3. Criando relacionamentos entre recursos
 - :white_large_square: 4. Criando clientes REST
 - :white_large_square: 5. Criando os testes automatizados
 - :white_large_square: 6. Segurança
