@@ -1,6 +1,8 @@
-package dev.rafaelreis.rest.domain;
+package dev.rafaelreis.rest.interfaces.incoming.mapping;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
@@ -10,8 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
-import dev.rafaelreis.rest.interfaces.PassengerAPI;
-import dev.rafaelreis.rest.interfaces.input.TravelRequestInput;
+import dev.rafaelreis.rest.domain.Passenger;
+import dev.rafaelreis.rest.domain.PassengerRepository;
+import dev.rafaelreis.rest.domain.TravelRequest;
+import dev.rafaelreis.rest.interfaces.incoming.PassengerAPI;
+import dev.rafaelreis.rest.interfaces.incoming.input.TravelRequestInput;
+import dev.rafaelreis.rest.interfaces.incoming.output.TravelRequestOutput;
 
 @Component
 public class TravelRequestMapper {
@@ -59,5 +65,11 @@ public class TravelRequestMapper {
 		return model;
 	}
 	
+	public List<EntityModel<TravelRequestOutput>> buildOutputModel(List<TravelRequest> requests) {
+		return requests
+				.stream()
+				.map(tr -> buildOutputModel(tr, map(tr)))
+				.collect(Collectors.toList());
+	}
 	
 }

@@ -1,4 +1,4 @@
-package dev.rafaelreis.rest.interfaces.input;
+package dev.rafaelreis.rest.interfaces.incoming.input;
 
 import lombok.Data;
 

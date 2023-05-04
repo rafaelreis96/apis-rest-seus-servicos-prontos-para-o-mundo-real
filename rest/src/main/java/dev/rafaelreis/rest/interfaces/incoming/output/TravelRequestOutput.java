@@ -1,7 +1,8 @@
-package dev.rafaelreis.rest.domain;
+package dev.rafaelreis.rest.interfaces.incoming.output;
 
 import java.util.Date;
 
+import dev.rafaelreis.rest.domain.TravelRequestStatus;
 import lombok.Data;
 
 @Data

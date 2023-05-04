@@ -1,4 +1,4 @@
-package dev.rafaelreis.rest.interfaces;
+package dev.rafaelreis.rest.interfaces.incoming;
 
 import java.util.List;
 import java.util.Optional;
