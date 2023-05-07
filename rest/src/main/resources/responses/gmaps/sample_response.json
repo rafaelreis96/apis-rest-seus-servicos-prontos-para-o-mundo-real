@@ -1,0 +1,92 @@
+{
+    "geocoded_waypoints": [
+        {
+            "geocoder_status": "OK",
+            "partial_match": true,
+            "place_id": "ChIJI-XMgLhZzpQRKEqdwfQsZgs",
+            "types": [
+                "establishment",
+                "point_of_interest",
+                "transit_station"
+            ]
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJfVrh8pRZzpQRkF4-eSYhud4",
+            "types": [
+                "street_address"
+            ]
+        }
+    ],
+    "routes": [
+        {
+            "bounds": {
+                "northeast": {
+                    "lat": -23.5650419,
+                    "lng": -46.6509781
+                },
+                "southwest": {
+                    "lat": -23.5659517,
+                    "lng": -46.6520545
+                }
+            },
+            "copyrights": "Map data ©2023 Google",
+            "legs": [
+                {
+                    "distance": {
+                        "text": "0.1 km",
+                        "value": 149
+                    },
+                    "duration": {
+                        "text": "1 min",
+                        "value": 37
+                    },
+                    "end_address": "Av. Paulista, 1000 - Bela Vista, São Paulo - SP, 01310-100, Brazil",
+                    "end_location": {
+                        "lat": -23.5650419,
+                        "lng": -46.6520545
+                    },
+                    "start_address": "Av. Paulista, 900 - Bela Vista, São Paulo - SP, 01403-000, Brazil",
+                    "start_location": {
+                        "lat": -23.5659517,
+                        "lng": -46.6509781
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 149
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 37
+                            },
+                            "end_location": {
+                                "lat": -23.5650419,
+                                "lng": -46.6520545
+                            },
+                            "html_instructions": "Head <b>northwest</b> on <b>Av. Paulista</b> toward <b>Alameda Campinas</b><div style=\"font-size:0.9em\">Closed Sundays 10:00 AM – 7:00 PM</div><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                            "polyline": {
+                                "points": "dvynCrov{G_@f@IJIH_BnBEDEHUV"
+                            },
+                            "start_location": {
+                                "lat": -23.5659517,
+                                "lng": -46.6509781
+                            },
+                            "travel_mode": "DRIVING"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                }
+            ],
+            "overview_polyline": {
+                "points": "dvynCrov{GuDtE"
+            },
+            "summary": "Av. Paulista",
+            "warnings": [],
+            "waypoint_order": []
+        }
+    ],
+    "status": "OK"
+}

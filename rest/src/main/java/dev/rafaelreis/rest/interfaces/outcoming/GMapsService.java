@@ -16,6 +16,9 @@ public class GMapsService {
 
 	@Value("${app.car.domain.googlemaps.apikey}")
 	private String appKey;
+	
+	@Value("${interfaces.outcoming.gmaps.host:https://maps.googleapis.com}")
+	private String gMapsHost;
 
 	private final static String GMAPS_TAMPLATE = "https://maps.googleapis.com/maps/api/directions/json?"
 			+ "origin={origin}&destination={destination}&key={key}";
