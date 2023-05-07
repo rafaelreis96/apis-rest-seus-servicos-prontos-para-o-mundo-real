@@ -6,7 +6,7 @@ Estudo  do Livro sobre APIs Rest (https://www.casadocodigo.com.br/products/livro
 - :ballot_box_with_check: 2. Expandindo nosso serviço inicial
 - :ballot_box_with_check: 3. Criando relacionamentos entre recursos
 - :ballot_box_with_check: 4. Criando clientes REST
-- :white_large_square: 5. Criando os testes automatizados
+- :ballot_box_with_check: 5. Criando os testes automatizados
 - :white_large_square: 6. Segurança
 - :white_large_square: 7. APIs
 - :white_large_square: 8. Documentando a API
