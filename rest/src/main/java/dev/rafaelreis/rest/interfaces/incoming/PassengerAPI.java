@@ -20,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import dev.rafaelreis.rest.domain.Passenger;
 import dev.rafaelreis.rest.domain.PassengerRepository;
+import jakarta.annotation.security.RolesAllowed;
 
 @Service
 @RestController
@@ -41,6 +42,7 @@ public class PassengerAPI {
 	}
 	
 	@PostMapping
+	@RolesAllowed("ADMIN")
 	public Passenger createPassenger(@RequestBody Passenger passenger) {
 		return passengerRepository.save(passenger);
 	}
