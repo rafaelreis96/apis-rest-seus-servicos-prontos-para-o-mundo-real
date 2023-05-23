@@ -18,6 +18,7 @@ import dev.rafaelreis.rest.domain.TravelService;
 import dev.rafaelreis.rest.interfaces.incoming.input.TravelRequestInput;
 import dev.rafaelreis.rest.interfaces.incoming.mapping.TravelRequestMapper;
 import dev.rafaelreis.rest.interfaces.incoming.output.TravelRequestOutput;
+import jakarta.validation.Valid;
 
 @Service
 @RestController
@@ -31,7 +32,7 @@ public class TravelRequestAPI {
 	private TravelRequestMapper mapper;
 
 	@PostMapping
-	public EntityModel<TravelRequestOutput> makeTravelRequet(@RequestBody TravelRequestInput travelRequestInput) {
+	public EntityModel<TravelRequestOutput> makeTravelRequet(@RequestBody @Valid TravelRequestInput travelRequestInput) {
 		TravelRequest request = travelService.saveTravelRequest(mapper.map(travelRequestInput));
 		TravelRequestOutput output = mapper.map(request);
 		return mapper.buildOutputModel(request, output);
