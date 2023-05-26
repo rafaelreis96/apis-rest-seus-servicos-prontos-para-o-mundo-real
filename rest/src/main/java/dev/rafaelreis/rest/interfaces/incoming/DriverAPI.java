@@ -1,69 +1,44 @@
 package dev.rafaelreis.rest.interfaces.incoming;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import dev.rafaelreis.rest.domain.Driver;
-import dev.rafaelreis.rest.domain.DriverRepository;
+import dev.rafaelreis.rest.interfaces.incoming.errorhandling.ErrorResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Service
-@RestController
-@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-public class DriverAPI {
+@Tag(name="Driver API", description = "Manipula dados de motoristas.")
+public interface DriverAPI {
 
-	@Autowired
-	private DriverRepository driverRepository;
-
-	@GetMapping("/drivers")
-	public List<Driver> listDrivers() {
-		return driverRepository.findAll();
-	}
-
+	@Operation(description = "Lista todos os motoristas disponíveis")
+	public List<Driver> listDrivers();
+	
 	@RequestMapping("/drivers/{id}")
-	public Driver findDriver(@PathVariable("id") Long id) {
-		return driverRepository.findById(id)
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-	}
-
-	@PostMapping("/drivers")
-	public Driver createDriver(@RequestBody Driver driver) {
-		return driverRepository.save(driver);
-	}
-
-	@PutMapping("/drivers/{id}")
-	public Driver fullUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
-		Driver foundDriver = findDriver(id);
-		foundDriver.setBirthDate(driver.getBirthDate());
-		foundDriver.setName(driver.getName());
-		return driverRepository.save(foundDriver);
-	}
-
-	@PatchMapping("/drivers/{id}")
-	public Driver incrementalUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
-		Driver foundDriver = findDriver(id);
-		foundDriver.setBirthDate(Optional.ofNullable(driver.getBirthDate()).orElse(foundDriver.getBirthDate()));
-		foundDriver.setName(Optional.ofNullable(driver.getName()).orElse(foundDriver.getName()));
-		return driverRepository.save(foundDriver);
-	}
-
-	@DeleteMapping("/drivers/{id}")
-	public void deleteDriver(@PathVariable("id") Long id) {
-		driverRepository.delete(findDriver(id));
-	}
-
+	@Operation(description="Localiza um motorista especifico", responses = {
+			@ApiResponse(responseCode="200", description="Caso o motorista tenha sido encontrado na base"),
+			@ApiResponse(
+					responseCode="404", 
+					description="Caso o motorista não tenha sido encontrado",
+					content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+	})
+	public Driver findDriver(
+			@Parameter(description = "ID do motorista a ser localizado")
+			@PathVariable("id") Long id);
+	
+	public Driver createDriver(@Parameter(description = "Dados do motorista a ser criado") @RequestBody Driver driver);
+	
+	public Driver fullUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver);
+	
+	public Driver incrementalUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver);
+	
+	public void deleteDriver(@PathVariable("id") Long id);
+	
 }

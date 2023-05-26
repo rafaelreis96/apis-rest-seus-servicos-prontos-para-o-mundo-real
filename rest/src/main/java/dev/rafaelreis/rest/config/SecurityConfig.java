@@ -24,6 +24,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity(jsr250Enabled = true)
 public class SecurityConfig  {
  
+	private static final String[] WHITE_LIST = {
+			"/swagger-ui.html", 
+			"/swagger-ui/**", 
+			"/v3/api-docs/**"
+	};
+	
 	@Bean
 	DataSource dataSource() {
 		return new EmbeddedDatabaseBuilder()
@@ -44,11 +50,12 @@ public class SecurityConfig  {
 		http.sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
-		http.authorizeHttpRequests()
-			.anyRequest()
-			.authenticated()
-			.and()
-			.httpBasic();
+		http.authorizeHttpRequests((authorize) -> authorize
+				.requestMatchers(WHITE_LIST)
+				.permitAll()
+				.anyRequest()
+				.authenticated())
+		 	.httpBasic();
 		
 		return http.build();
 	}

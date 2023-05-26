@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestControllerAdvice
 public class DefaultErrorHandling {
 	
@@ -21,6 +26,12 @@ public class DefaultErrorHandling {
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ApiResponses(
+		@ApiResponse(responseCode="400", content = @Content(
+			mediaType = "application/json",
+			schema = @Schema(implementation = ErrorResponse.class)
+		))
+	)
 	public ErrorResponse handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
 		
 		List<ErrorData> messages = ex
