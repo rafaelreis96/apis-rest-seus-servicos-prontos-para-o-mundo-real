@@ -1,13 +1,11 @@
 package dev.rafaelreis.rest.interfaces.incoming;
 
-import java.util.List;
-
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import dev.rafaelreis.rest.domain.Driver;
 import dev.rafaelreis.rest.interfaces.incoming.errorhandling.ErrorResponse;
+import dev.rafaelreis.rest.interfaces.incoming.output.Drivers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,7 +17,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public interface DriverAPI {
 
 	@Operation(description = "Lista todos os motoristas disponíveis")
-	public List<Driver> listDrivers();
+	public Drivers listDrivers(@Parameter(description = "Número da página") int page);
 	
 	@RequestMapping("/drivers/{id}")
 	@Operation(description="Localiza um motorista especifico", responses = {
@@ -30,15 +28,14 @@ public interface DriverAPI {
 					content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
 	})
 	public Driver findDriver(
-			@Parameter(description = "ID do motorista a ser localizado")
-			@PathVariable("id") Long id);
+			@Parameter(description = "ID do motorista a ser localizado") Long id);
 	
-	public Driver createDriver(@Parameter(description = "Dados do motorista a ser criado") @RequestBody Driver driver);
+	public Driver createDriver(@Parameter(description = "Dados do motorista a ser criado") Driver driver);
 	
-	public Driver fullUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver);
+	public Driver fullUpdateDriver(Long id, @RequestBody Driver driver);
 	
-	public Driver incrementalUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver);
+	public Driver incrementalUpdateDriver(Long id, @RequestBody Driver driver);
 	
-	public void deleteDriver(@PathVariable("id") Long id);
+	public void deleteDriver(Long id);
 	
 }

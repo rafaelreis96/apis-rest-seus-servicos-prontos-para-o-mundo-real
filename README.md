@@ -10,7 +10,7 @@ Estudo  do Livro sobre APIs Rest (https://www.casadocodigo.com.br/products/livro
 - :ballot_box_with_check: 6. Segurança
 - :ballot_box_with_check: 7. APIs
 - :ballot_box_with_check: 8. Documentando a API
-- :white_large_square: 9. Outras técnicas
+- :ballot_box_with_check: 9. Outras técnicas
 - :white_large_square: 10. Considerações finais
 - :white_large_square: 11. Referências bibliográficas
 
